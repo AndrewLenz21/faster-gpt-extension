@@ -7,7 +7,7 @@
     "dev": "turbo run dev",
     "dev:landing": "turbo run dev --filter=landing",
     "build:landing": "turbo run build --filter=landing",
-    "deploy:landing": "pnpm --filter landing exec wrangler deploy",
+    "deploy:landing": "npm run deploy --workspace=landing",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"

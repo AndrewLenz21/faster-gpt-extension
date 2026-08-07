@@ -1,0 +1,43 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Navbar } from "@modules/navigation";
+---
+
+<Layout title="404 — Page not found | FasterGPT">
+  <Navbar client:load />
+
+  <main class="relative flex min-h-[calc(100vh-4rem)] items-center justify-center overflow-x-hidden px-4 py-20">
+    <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10 bg-om-radial"></div>
+    <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10 bg-om-grid opacity-60"></div>
+    <div
+      aria-hidden="true"
+      class="bg-om-blob pointer-events-none fixed -top-32 -left-32 -z-10 h-80 w-80 rounded-full opacity-50 blur-3xl"
+    ></div>
+
+    <section class="anim-fade-up mx-auto max-w-xl text-center">
+      <span class="features-eyebrow">404</span>
+      <h1 class="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">
+        Page not found
+      </h1>
+      <p class="mx-auto mt-3 max-w-md text-sm leading-relaxed text-muted-foreground sm:text-base">
+        The page you're looking for doesn't exist, or it may have moved. Head back
+        to the homepage to grab the extension.
+      </p>
+      <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
+        <a
+          href="/"
+          class="inline-flex h-11 items-center justify-center gap-2 rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground transition hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          Back to homepage
+        </a>
+        <a
+          href="/downloads/faster-gpt-extension-1.0.0.zip"
+          download="faster-gpt-extension-1.0.0.zip"
+          class="inline-flex h-11 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
+        >
+          Download FasterGPT
+        </a>
+      </div>
+    </section>
+  </main>
+</Layout>
