@@ -1,0 +1,88 @@
+@import "tailwindcss";
+@import "../../styles-mock/styles/theme-tokens.css";
+@import "../../styles-mock/styles/themes/dark.css";
+@import "../../styles-mock/styles/themes/atom.css";
+@import "../../styles-mock/styles/themes/sky.css";
+@import "../../styles-mock/styles/themes/ocean.css";
+
+@theme inline {
+  --color-extension-background: var(--extension-background);
+  --color-extension-foreground: var(--extension-foreground);
+  --color-extension-muted: var(--extension-muted);
+  --color-extension-border: var(--extension-border);
+  --color-extension-nav: var(--extension-nav);
+  --color-extension-surface: var(--extension-surface);
+  --color-extension-accent: var(--extension-accent);
+  --color-extension-success: var(--extension-success);
+  --color-extension-ring: var(--extension-ring);
+  --radius-extension: var(--extension-radius);
+  --shadow-extension-soft: var(--extension-shadow-soft);
+}
+
+:root {
+  --extension-radius: var(--radius);
+  --extension-background: var(--background);
+  --extension-foreground: var(--foreground);
+  --extension-muted: var(--muted-foreground);
+  --extension-border: var(--border);
+  --extension-nav: var(--nav-bg);
+  --extension-surface: var(--card);
+  --extension-accent: var(--primary);
+  --extension-success: var(--chart-2);
+  --extension-ring: var(--ring);
+  --extension-shadow-soft: 0 10px 30px oklch(0 0 0 / 0.2);
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  background: var(--extension-background);
+  color: var(--extension-foreground);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root.dark,
+:root.atom {
+  color-scheme: dark;
+}
+
+:root.dark {
+  --extension-success: var(--foreground);
+}
+
+:root.atom {
+  --extension-success: var(--primary);
+}
+
+:root.sky,
+:root.ocean {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--extension-background);
+}
+
+.extension-popup {
+  width: 400px;
+}
+
+.extension-scrollbar {
+  scrollbar-color: oklch(0.35 0.03 260) transparent;
+  scrollbar-width: thin;
+}
+
+.extension-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.extension-scrollbar::-webkit-scrollbar-thumb {
+  background: oklch(0.35 0.03 260);
+  border: 2px solid var(--extension-background);
+  border-radius: 9999px;
+}
+
+.extension-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--extension-accent);
+}

@@ -1,0 +1,85 @@
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html,
+    body {
+      transition-property:
+        color, background-color, border-color, outline-color,
+        text-decoration-color, fill, stroke;
+      transition-duration: var(--theme-transition-duration);
+      transition-timing-function: var(--theme-transition-ease);
+    }
+  }
+
+  html.sky body {
+    background-image: linear-gradient(
+      to bottom,
+      oklch(0.94 0.02 235),
+      oklch(0.98 0.01 235)
+    );
+    background-attachment: fixed;
+  }
+
+  html.ocean body {
+    background-image: linear-gradient(
+      to bottom,
+      oklch(0.91 0.05 195),
+      oklch(0.96 0.03 195)
+    );
+    background-attachment: fixed;
+  }
+
+  .atmospheric-fade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 180px;
+    pointer-events: none;
+    z-index: 40;
+    background: var(--background);
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 22%,
+      black 40%,
+      transparent 85%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 22%,
+      black 40%,
+      transparent 85%
+    );
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 18s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee {
+      animation: none;
+    }
+  }
+}

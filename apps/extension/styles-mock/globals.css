@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@import "./styles/theme-tokens.css";
+@import "./styles/themes/dark.css";
+@import "./styles/themes/atom.css";
+@import "./styles/themes/sky.css";
+@import "./styles/themes/ocean.css";
+@import "./styles/base.css";

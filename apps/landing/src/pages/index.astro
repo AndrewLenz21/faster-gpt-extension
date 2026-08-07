@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { LandingHero, LandingShowcase, LandingFeatures, LandingInstall } from "@modules/landing";
+import { Navbar } from "@modules/navigation";
+---
+
+<Layout>
+  <Navbar client:load />
+
+  <main class="relative min-h-screen overflow-x-hidden">
+    <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10 bg-om-radial"></div>
+    <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10 bg-om-grid opacity-60"></div>
+    <div
+      aria-hidden="true"
+      class="bg-om-blob pointer-events-none fixed -top-32 -left-32 -z-10 h-80 w-80 rounded-full opacity-50 blur-3xl"
+    ></div>
+    <div
+      aria-hidden="true"
+      class="bg-om-blob pointer-events-none fixed -right-32 -bottom-32 -z-10 h-96 w-96 rounded-full opacity-40 blur-3xl"
+    ></div>
+
+    <LandingHero client:load />
+    <LandingShowcase client:load />
+    <LandingFeatures client:load />
+    <LandingInstall client:load />
+  </main>
+</Layout>

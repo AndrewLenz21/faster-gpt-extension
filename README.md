@@ -1,159 +1,93 @@
-# Turborepo starter
+# ⚡ FasterGPT Extension
 
-This Turborepo starter is maintained by the Turborepo core team.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue)](https://www.typescriptlang.org/)
 
-## Using this example
+An open-source browser extension that provides conversation performance metrics, virtualization awareness, and
+content optimizations for ChatGPT — built for Vivaldi.
 
-Run the following command:
+<div align="center">
+  <img src="images/extension.png" alt="FasterGPT popup showing conversation metrics and controls" width="500" />
+</div>
 
-```sh
-npx create-turbo@latest
+## 🧠 What it does
+
+ChatGPT already uses native message virtualization for long conversations. Instead of replacing it, this extension:
+
+- **📊 Counts messages** — detects total conversation turns and currently mounted messages using ChatGPT's DOM structure.
+- **👁️ Detects virtualization** — compares total messages against mounted messages, starting at 15 to avoid false positives.
+- **💾 Monitors tab memory** — estimates page memory from JS heap, DOM, HTML, images, and resources.
+- **⚙️ Content optimizations** — optional, opt-in: reduce animations, collapse distant code blocks, pause off-screen media.
+
+<div align="center">
+  <img src="images/options.png" alt="FasterGPT performance settings page" width="500" />
+</div>
+
+## 🎯 Features
+
+### Popup card
+
+- Total messages count and currently rendered count.
+- Virtualization status (`detected`, `not-detected`, `unknown`).
+- Estimated tab memory with five-component breakdown.
+- System memory usage gauge.
+- Conversation performance controls.
+- Four themes: Dark, Atom, Sky, Ocean.
+
+### Content optimizations (opt-in)
+
+- **🎬 Reduce animations** — disables transitions and animations on completed messages without affecting streaming.
+- **📝 Collapse distant code** — collapses assistant code blocks 800px+ outside the viewport; restores on scroll, click, or disable.
+- **🔇 Pause off-screen media** — pauses video/audio far from the viewport without removing it.
+
+All content changes are non-destructive: code stays in the DOM, search works, native streaming is never touched.
+
+### Settings
+
+- Persisted in extension local storage.
+- Survive popup closes, page reloads, and browser restarts.
+- Cross-page sync: popup and options page update each other in real time.
+
+## 🏗️ Architecture
+
+```
+apps/extension/
+  modules/
+    conversation-performance/   📊 Metrics, virtualization, optimizations
+    current-page/               🔍 Message count, memory diagnostics
+    theme/                      🎨 Dark / Atom / Sky / Ocean
+    header/                     🔝 Extension header with theme picker
+    footer/                     📎 Credits and GitHub link
+    extension/                  🧩 Popup shell composition
+  entrypoints/
+    popup/                      🔲 Extension toolbar popup
+    options/                    ⚙️ Performance settings page
+    content.ts                  📜 ChatGPT content script
+    background.ts               💾 Storage persistence worker
 ```
 
-## What's inside?
+## 🚀 Development
 
-This Turborepo includes the following packages/apps:
+```bash
+cd apps/extension
 
-### Apps and Packages
+# Compile TypeScript
+npm run compile
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+# Build the extension
+npm run build
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo build
+# Start Vivaldi with hot reload
+npm run dev
 ```
 
-Without global `turbo`, use your package manager:
+Built with [WXT](https://wxt.dev), [React](https://react.dev), and [Zustand](https://zustand.docs.pmnd.rs).
 
-```sh
-cd my-turborepo
-npx turbo build
-npm dlx turbo build
-npm exec turbo build
-```
+## 🤖 AI tools
 
-You can build a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+- [ChatGPT](https://chatgpt.com) — architecture planning, styling, code reviews.
+- [OpenCode](https://github.com/anomalyco/opencode) — code generation with GPT and DeepSeek models.
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
+## 📄 License
 
-```sh
-turbo build --filter=docs
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo build --filter=docs
-npm exec turbo build --filter=docs
-npm exec turbo build --filter=docs
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo dev
-```
-
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo dev
-npm exec turbo dev
-npm exec turbo dev
-```
-
-You can develop a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo dev --filter=web
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo dev --filter=web
-npm exec turbo dev --filter=web
-npm exec turbo dev --filter=web
-```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo login
-```
-
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo login
-npm exec turbo login
-npm exec turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo link
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo link
-npm exec turbo link
-npm exec turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.dev/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.dev/docs/reference/configuration)
-- [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)
+MIT — open-source and free to modify and redistribute.

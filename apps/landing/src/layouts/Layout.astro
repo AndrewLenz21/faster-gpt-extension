@@ -1,0 +1,62 @@
+---
+import "../styles/globals.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "FasterGPT — ChatGPT performance metrics & optimizations",
+  description = "Open-source browser extension for ChatGPT conversation metrics, virtualization awareness, and optional content optimizations.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon/32.png" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#171717" />
+    <title>{title}</title>
+
+    <script is:inline>
+      (function () {
+        try {
+          const raw = localStorage.getItem("faster-gpt-landing:theme");
+          let theme = null;
+          if (raw) {
+            try {
+              const data = JSON.parse(raw);
+              theme = data?.state?.theme;
+            } catch {
+              theme = raw;
+            }
+          }
+          if (theme && ["dark", "atom", "sky", "ocean"].includes(theme)) {
+            document.documentElement.classList.remove("dark", "atom", "sky", "ocean");
+            document.documentElement.classList.add(theme);
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="page-background" aria-hidden="true">
+      <div class="dot-pattern"></div>
+    </div>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+  }
+</style>
