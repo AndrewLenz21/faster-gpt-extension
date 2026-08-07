@@ -157,6 +157,22 @@ export default function LandingFeatures() {
         <p>
           Open Source — MIT licensed. Built for Vivaldi / Chromium browsers.
         </p>
+        <p className="mt-3 flex items-center justify-center gap-4">
+          <a
+            href="/privacy"
+            className="inline-flex items-center rounded-md px-2 py-1 font-medium transition hover:text-foreground"
+          >
+            Privacy Policy
+          </a>
+          <a
+            href="https://github.com/AndrewLenz21/faster-gpt-extension"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center rounded-md px-2 py-1 font-medium transition hover:text-foreground"
+          >
+            GitHub
+          </a>
+        </p>
       </footer>
     </>
   );

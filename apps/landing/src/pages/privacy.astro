@@ -1,0 +1,147 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Navbar } from "@modules/navigation";
+---
+
+<Layout title="Privacy Policy | FasterGPT">
+  <Navbar client:load />
+
+  <main class="relative overflow-x-hidden px-4 py-14 sm:py-20">
+    <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10 bg-om-radial"></div>
+    <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10 bg-om-grid opacity-60"></div>
+    <div
+      aria-hidden="true"
+      class="bg-om-blob pointer-events-none fixed -top-32 -left-32 -z-10 h-80 w-80 rounded-full opacity-50 blur-3xl"
+    ></div>
+
+    <article class="mx-auto max-w-2xl">
+      <header class="anim-fade-down mb-10 text-center">
+        <span class="features-eyebrow">LEGAL</span>
+        <h1 class="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">Privacy Policy</h1>
+        <p class="mt-3 text-xs text-muted-foreground sm:text-sm">Last updated: August 7, 2026</p>
+      </header>
+
+      <div class="anim-fade-up space-y-8 text-sm leading-relaxed text-foreground/90 sm:text-[15px]">
+        <p>
+          FasterGPT is an open-source browser extension designed to provide conversation metrics
+          and client-side performance optimizations for ChatGPT.
+        </p>
+
+        <section>
+          <h2 class="mb-2 text-base font-semibold tracking-tight sm:text-lg">Data accessed</h2>
+          <p class="mb-2">
+            FasterGPT may access limited information from supported ChatGPT pages in order to
+            provide its features, including:
+          </p>
+          <ul class="list-disc space-y-1.5 pl-5 text-muted-foreground">
+            <li>The current website/domain.</li>
+            <li>
+              Page structure and website content required to detect conversation elements.
+            </li>
+            <li>Conversation-related metrics, such as the number of messages.</li>
+            <li>
+              Browser and system memory information used to display performance metrics.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="mb-2 text-base font-semibold tracking-tight sm:text-lg">How data is used</h2>
+          <p>
+            This information is used exclusively to provide FasterGPT's user-facing features,
+            including conversation metrics, memory information, and optional performance
+            optimizations.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="mb-2 text-base font-semibold tracking-tight sm:text-lg">Local processing</h2>
+          <p class="mb-2">
+            FasterGPT processes this information locally within the user's browser.
+          </p>
+          <p>
+            FasterGPT does not transmit ChatGPT conversations, website content, browsing history,
+            or performance metrics to the developer or to external servers.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="mb-2 text-base font-semibold tracking-tight sm:text-lg">Data sharing</h2>
+          <p>
+            FasterGPT does not sell, rent, share, or transfer user data to third parties.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="mb-2 text-base font-semibold tracking-tight sm:text-lg">Advertising</h2>
+          <p>
+            FasterGPT does not use user data for advertising, profiling, personalized advertising,
+            or retargeting.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="mb-2 text-base font-semibold tracking-tight sm:text-lg">Data retention</h2>
+          <p class="mb-2">
+            FasterGPT does not maintain a remote database containing user conversations, browsing
+            activity, or performance metrics.
+          </p>
+          <p>
+            Extension settings may be stored locally in the browser so that user preferences can
+            persist between sessions.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="mb-2 text-base font-semibold tracking-tight sm:text-lg">
+            Chrome Web Store Limited Use
+          </h2>
+          <p>
+            FasterGPT's use of information received from Chrome APIs complies with the Chrome Web
+            Store User Data Policy, including the Limited Use requirements.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="mb-2 text-base font-semibold tracking-tight sm:text-lg">Open source</h2>
+          <p>
+            FasterGPT is open source. Its source code is publicly available through the project's
+            GitHub repository.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="mb-2 text-base font-semibold tracking-tight sm:text-lg">
+            Changes to this policy
+          </h2>
+          <p>
+            If FasterGPT's data handling practices change, this Privacy Policy will be updated
+            accordingly and users will be informed where required.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="mb-2 text-base font-semibold tracking-tight sm:text-lg">Contact</h2>
+          <p>
+            For privacy-related questions or issues, please use the project's GitHub repository or
+            the contact information available on the FasterGPT website.
+          </p>
+        </section>
+
+        <p class="border-t border-border/40 pt-6 text-muted-foreground">
+          FasterGPT is an independent open-source project and is not affiliated with or endorsed
+          by OpenAI.
+        </p>
+      </div>
+
+      <div class="anim-fade-up mt-10 text-center">
+        <a
+          href="/"
+          class="inline-flex h-11 items-center justify-center gap-2 rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground transition hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          Back to homepage
+        </a>
+      </div>
+    </article>
+  </main>
+</Layout>
