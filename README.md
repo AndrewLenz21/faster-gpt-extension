@@ -3,6 +3,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue)](https://www.typescriptlang.org/)
 
+> **See the landing:** [https://faster-gpt-extension.andrew-lenz.com](https://faster-gpt-extension.andrew-lenz.com)
+
 An open-source browser extension that provides conversation performance metrics, virtualization awareness, and
 content optimizations for ChatGPT — built for Vivaldi.
 
